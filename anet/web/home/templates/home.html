@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block home %}
+<h1>Hello</h1>
+{{key}}
+<ul>
+    {% for i in range(3) %}
+    <li>{{i}}</li>
+    {% endfor %}
+</ul>
+{% endblock home%}

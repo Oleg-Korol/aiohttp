@@ -1,0 +1,7 @@
+aiohttp == 3.8.4
+aiohttp-jinja2==1.5.1
+gunicorn==20.1.0
+controller==0.4.1
+tortoise-orm==0.19.3
+asyncpg==0.27.0
+
