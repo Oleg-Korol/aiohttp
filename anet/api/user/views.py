@@ -45,11 +45,17 @@ class UserView(web.View):
         elif isinstance(data, list):
             u_name = [el["username"] for el in data]
             users = await User.filter(username__in=u_name)
-            print(users)
+            for rec, usr in zip(data, users):
+                rec.pop("username")
+                await usr.update_from_dict(rec)
+                await usr.save(update_fields=list(rec.keys()))
+            return web.json_response({"result":"text"}, status=200)
 
         # user =  await User.all().update(**data)
         return web.json_response({"result": "text"}, status=200)
 
     async def delete(self):
         data = await self.request.json()
-        return web.json_response({"result": "text"}, status=200)
+        user = await User.get(username = data["username"])
+        await user.delete()
+        return web.json_response({"result": f"User:{user.id=} was deleted"}, status=200)

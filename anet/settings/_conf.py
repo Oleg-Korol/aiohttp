@@ -1,7 +1,7 @@
 import os
 import pathlib
 
-__all__ = ("BASE_DIR", "DB_CONFIG", "API_V")
+__all__ = ("BASE_DIR", "DB_CONFIG", "API_V","PRIVATE_KEY_PATH")
 
 BASE_DIR = pathlib.Path(__file__).parent.parent.absolute()
 
@@ -29,3 +29,4 @@ DB_CONFIG = {
 }
 
 API_V = "1.0"
+PRIVATE_KEY_PATH = BASE_DIR / "private.pem"
